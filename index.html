@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<title>Landing Page | Lean Technologies</title>
+
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
+<!-- bootstrap css -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- jQuery -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Lean Technologies Test Landing Page" />
+
+</head>
+<body>
+
+    
+ <!-- Navigation -->
+    <nav class="navbar  navbar-fixed-top leantech-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand scroll" href="#home">
+                    <div class="logo">
+                        <img src="images/Logo.jpg" alt="logo">
+                    </div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#home" class="scroll" >Home</a>
+                    </li>
+                    <li>
+                        <a href="#products" class="scroll">Products</a>
+                    </li>
+                    <li>
+                        <a href="#success-cases" class="scroll">Case</a>
+                    </li>
+                    <li>
+                        <a href="#success-cases" class="scroll">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+
+<script> 
+    
+//* Navbar smooth scrolling
+$(".scroll").on('click', function (event) {
+    event.preventDefault();
+    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+});
+$(' #myNavbar ul  li  a ').on('click',function(){
+    $('#myNavbar').addClass('sidenav');
+});
+// Sticky navigation bar
+$(window).on('scroll', function () {
+    if ($(this).scrollTop() > 70) { 
+        $('.navbar').addClass("sticky");
+    }else{
+        $('.navbar').removeClass("sticky");
+    }
+});    
+// Close mobile navigation bar after click 
+var navMain = $(".navbar-collapse");
+
+     navMain.on("click", "a", null, function () {
+         navMain.collapse('hide');
+     });
+    
+    
+</script>    
+  
+<!-- BANNER -->
+<div class="banner" id="home" style="background-image: url(images/hero.jpg);">
+
+				<div class="container">
+
+					<div class="text-left">
+						<h1 >Welcome to Leantech</h1>
+						<p class="website-description">Path to digital succes is not a one shot game but
+            rather a loop of bad and good experiments. That requires strategical and methodological
+            mindset, aim for scalability and profitability as well as A-class execution.</p>
+						<div class="buttons">
+							<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                Get in touch
+            </button>
+
+						</div>
+					</div>
+
+				</div>
+
+</div>
+      
+    
+<!-- Modal -->
+<div class="modal" id="modalForm" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Your details here</h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p class="statusMsg"></p>
+                <form role="form">
+                    
+                    <div class="form-group">
+                        <label for="inputName">Full Name*</label>
+                        <input type="text" class="form-control" id="inputName"/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputTel">Phone</label>
+                        <input type="tel" class="form-control" id="inputTel"/>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="inputEmail">Email*</label>
+                        <input type="email" class="form-control" id="inputEmail"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage">Message</label>
+                        <textarea class="form-control" id="inputMessage"></textarea>
+                    </div>
+                    <p>*Required</p>
+                    <div class="form-group" style="text-align: center;">
+                        <input type="checkbox" id="inputTerms">
+                        <label for="inputTerms">Agree on terms</label>
+                    </div>
+                    
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Get in touch</button>
+                <br>
+                <a href="#">Terms and conditions</a>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-- Contact Modal JS -->
+<script>
+function submitContactForm() {
+    
+    var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+    var name = $('#inputName').val();
+    var tel = $('#inputTel').val();
+    var email = $('#inputEmail').val();
+    var message = $('#inputMessage').val();
+    var check = $('#inputTerms').val();
+    if(name.trim() == '' ){
+        alert('Please enter your name.');
+        $('#inputName').focus();
+        return false;
+    }else if(email.trim() == '' ){
+        alert('Please enter your email.');
+        $('#inputEmail').focus();
+        return false;
+    }else if(email.trim() != '' && !reg.test(email)){
+        alert('Please enter valid email.');
+        $('#inputEmail').focus();
+        return false;
+    }else if(message.trim() == '' ){
+        alert('Please enter your message.');
+        $('#inputMessage').focus();
+        return false;
+    }else if ($('#inputTerms').prop("checked") == false) {
+        alert('Please agree with terms.');
+        return false;
+    }else{
+        $.ajax({
+            type:'POST',
+            url:'submit_form.php',
+            data:'contactFrmSubmit=1&name='+name+'&tel='+tel+'&email='+email+'&message='+message,
+           beforeSend: function () {
+                $('.submitBtn').attr("disabled","disabled");
+                $('.modal-body').css('opacity', '.5');
+            },
+            success:function(msg){
+                if(msg == 'ok'){
+                    $('#inputName').val('');
+                    $('#inputTel').val('');
+                    $('#inputEmail').val('');
+                    $('#inputMessage').val('');
+                    /*$("#download_link").html(msg);*/
+                    $('#modalForm').modal('hide');
+                    $("#success_modal").modal("show");
+                }else{
+                    $('.statusMsg').html('<span style="color:red;">Some problem occurred, please try again.</span>');
+                }
+                $('.submitBtn').removeAttr("disabled");
+                $('.modal-body').css('opacity', '');
+            }
+        });
+    }
+}
+</script>   
+ 
+<!-- Success dialog box modal -->
+ <div id="success_modal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <h2>Thank you for your inquiry!</h2>
+            <p>We will contact you within 24 hours.</p>
+        <div class="ok-button">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+        </div>
+     </div>
+</div>   
+    
+<!-- Products section -->
+    
+<div id="products" class="content-section">
+        <div class="container">
+            <div class="row">
+                
+                
+                <h2>Products</h2>
+                <div class="col-md-4 col-sm-6">
+                    <div class="product-item">
+                        <span class="product-icon first"></span>
+                        <h3>Full-stack consultancy</h3>
+                    </div> 
+                </div> 
+                
+                <div class="col-md-4 col-sm-6">
+                    <div class="product-item">
+                        <span class="product-icon second"></span>
+                        <h3>Market analysis</h3>
+                    </div>
+                </div> 
+                
+                <div class="col-md-4 col-sm-6">
+                    <div class="product-item">
+                        <span class="product-icon third"></span>
+                        <h3>Design</h3>
+                    </div> 
+                </div> 
+
+                
+            </div> 
+        </div> 
+    </div> 
+    
+<hr>
+    
+<!-- Success Cases -->
+	<section id="success-cases">
+        <div class="container">                 
+            <div class="row case">
+           	  	<div class="col-md-6">
+                    <div class="case-text">
+                	<h2>Success case</h2>
+                    <p>Path to digital succes is not a one shot game but rather a loop of bad and good experiments. That requires strategical and methodological mindset, aim for scalability and profitability as well as A-class execution</p>
+                    <a href="#">Learn more</a>  
+                        </div>
+                </div>
+                <div class="col-md-6">
+                  <a class="case-image-link" href="images/Case.jpg" title="Case Example">
+                		<img src="images/Case.jpg" alt="case_image">
+                  </a>
+                </div>
+           </div>
+                                        
+    	</div>
+	</section>  
+
+</body>
+</html>
