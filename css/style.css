@@ -199,13 +199,13 @@ padding-left: 30px;
   display: block;
 }
 .product-item .product-icon.first {
-  background-image: url(../images/1products.jpg);
+  background-image: url(../images/3Products.jpg);
 }
 .product-item .product-icon.second {
   background-image: url(../images/2Products.jpg);
 }
 .product-item .product-icon.third {
-  background-image: url(../images/3Products.jpg);
+  background-image: url(../images/1products.jpg);
 }
 @media (max-width: 767px) {
 .product-item {
